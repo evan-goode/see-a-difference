@@ -1,0 +1,138 @@
+// config
+$a: steelblue;
+$b: mediumvioletred;
+$lineWidth: 2;
+// end config
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: Montserrat;
+	min-width: 1280px;
+	text-align: center;
+}
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+h1 {
+	font-size: 64px;
+	margin: 0;
+	margin-top: 64px;
+}
+h2 {
+	margin: 0;
+	margin-bottom: 48px;
+}
+
+p {
+	text-align: justify;
+	width: 960px;
+}
+
+td {
+	padding: 16px;
+	padding-left: 0;
+	text-align: right;
+	input {
+		position: relative;
+		font-size: 16px;
+		outline: none;
+		border: none;
+		font-family: inherit;
+		text-align: center;
+		width: 64px;
+		height: 28px;
+		border-radius: 4px;
+		&.a {
+			background: transparentize($a, 0.75);
+		}
+		&.b {
+			background: transparentize($b, 0.75);
+		}
+	}
+}
+
+.se-row {
+	display: none;
+}
+
+.switch {
+	padding: 16px;
+	text-align: right;
+	input {
+		margin-left: 16px;
+		height: 16px;
+		width: 16px;
+		transform: translateY(2px);
+	}
+}
+
+#main {
+	margin-left: -64px;
+	margin-right: -64px;
+	.line.a {
+		stroke: $a;
+		stroke-width: $lineWidth;
+		fill: transparentize($a, 0.5);
+	}
+	.line.b {
+		stroke: $b;
+		stroke-width: $lineWidth;
+		fill: transparentize($b, 0.5);
+	}
+}
+
+#d {
+	line-height: 200%;
+	text-align: left;
+	width: 192px;
+	padding-left: 16px;
+}
+
+#a {
+	.line {
+		stroke: steelblue;
+		stroke-width: $lineWidth;
+		fill: url("#aGradient");
+	}
+}
+#b {
+	.line{
+		stroke: mediumvioletred;
+		stroke-width: $lineWidth;
+		fill: url(#bGradient);
+	}
+}
+.axis.x line {
+	stroke: black;
+	stroke-width: 2px;
+}
+.axis.x path {
+	stroke: black;
+	fill: none;
+	stroke-width: 2px;
+}
+.axis.x text {
+	transform: translateY(8px);
+}
+
+.label {
+	width: 480px;
+	padding-left: 64px;
+	padding-right: 64px;
+	margin-bottom: 64px;
+}
+
+.fine-print {
+	margin: 0;
+}
+
+footer {
+	opacity: 0.5;
+	margin: 64px;
+}

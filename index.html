@@ -1,0 +1,81 @@
+<!doctype html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>See a Difference</title>
+    <meta name = "description" content = "An interactive tool for visualizing sex effects">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <h1>See a Difference</h1>
+    <h2>An interactive tool for visualizing sex effects</h2>
+    <div class="row">
+    	<p class="instructions">This tool allows you to see the effect size (d) and percent overlap for any comparison between males and females. Enter the mean and standard deviation below for each group. If you have the standard error instead of the standard deviation, check the box to enter it and the sample size.</p>
+    </div>
+    <div class="row">
+    	<div class="controls">
+    		<table>
+    			<tr>
+    				<td>Male Mean</td>
+    				<td><input id="aMean" class="a mean update" value="24"></td>
+    			</tr>
+    			<tr class="sd-row">
+    				<td>Male SD</td>
+    				<td><input id="aSd" class="a sd update" value="1"></td>
+    			</tr>
+    			<tr class="se-row">
+    				<td>Male SEM</td>
+    				<td><input id="aSe" class="a se update" value=""></td>
+    			</tr>
+    			<tr class="se-row">
+    				<td>Male n</td>
+    				<td><input id="aN" class="a n update" value=""></td>
+    			</tr>
+    			<tr>
+    				<td>Female Mean</td>
+    				<td><input id="bMean" class="b mean update" value="26"></td>
+    			</tr>
+    			<tr class="sd-row">
+    				<td>Female SD</td>
+    				<td><input id="bSd" class="b sd update" value="2"></td>
+    			</tr>
+    			<tr class="se-row">
+    				<td>Female SEM</td>
+    				<td><input id="bSe" class="b se update" value=""></td>
+    			</tr>
+    			<tr class="se-row">
+    				<td>Female n</td>
+    				<td><input id="bN" class="b n update" value=""></td>
+    			</tr>
+    		</table>
+    		<div class="switch">Use Standard Error<input id="se" type="checkbox"></div>
+    	</div>
+    	<div class="graph" id="main"></div>
+    	<div id="d"></div>
+    </div>
+    <div class="row">
+    	<div class="graph" id="a"></div>
+    	<div class="graph" id="b"></div>
+    </div>
+    <div class="row">
+    	<div class="label">
+    		Male<br><br>
+    		<span id="aPercent"></span>
+    	</div>
+    	<div class="label">
+    		Female<br><br>
+    		<span id="bPercent"></span>
+      </div>
+    </div>
+    <div class="row">
+    	<p class="fine-print">This tool assumes both distributions are normal. Effect size is based on Cohen’s d. Overlap is based on Weitzman’s (greek delta). If you use this tool to prepare a publication, please cite TBN.</p>
+    </div>
+    <div class="row">
+    	<footer>Created, owned, and maintained by Evan D. Goode.</footer>
+    </div>
+    <script src="js/d3.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/gaussian.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
