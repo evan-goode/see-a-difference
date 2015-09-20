@@ -11,18 +11,18 @@
     <h1>See a Difference</h1>
     <h2>An interactive tool for visualizing sex effects</h2>
     <div class="row">
-    	<p class="instructions">This tool allows you to see the effect size (d) and percent overlap for any comparison between males and females. Enter the mean and standard deviation below for each group. If you have the standard error instead of the standard deviation, check the box to enter it and the sample size.</p>
+    	<p class="instructions">This tool allows you to see the effect size (d) and percent overlap for any comparison between males and females. Enter the mean and standard deviation below for each group. If you have the standard error instead of the standard deviation, check the box to enter it and the sample size (n).</p>
     </div>
     <div class="row">
     	<div class="controls">
     		<table>
     			<tr>
     				<td>Male Mean</td>
-    				<td><input id="aMean" class="a mean update" value="24"></td>
+    				<td><input id="aMean" class="a mean update" value="175"></td>
     			</tr>
     			<tr class="sd-row">
     				<td>Male SD</td>
-    				<td><input id="aSd" class="a sd update" value="1"></td>
+    				<td><input id="aSd" class="a sd update" value="7.1"></td>
     			</tr>
     			<tr class="se-row">
     				<td>Male SEM</td>
@@ -34,11 +34,11 @@
     			</tr>
     			<tr>
     				<td>Female Mean</td>
-    				<td><input id="bMean" class="b mean update" value="26"></td>
+    				<td><input id="bMean" class="b mean update" value="162"></td>
     			</tr>
     			<tr class="sd-row">
     				<td>Female SD</td>
-    				<td><input id="bSd" class="b sd update" value="2"></td>
+    				<td><input id="bSd" class="b sd update" value="6.5"></td>
     			</tr>
     			<tr class="se-row">
     				<td>Female SEM</td>
@@ -52,27 +52,28 @@
     		<div class="switch">Use Standard Error<input id="se" type="checkbox"></div>
     	</div>
     	<div class="graph" id="main"></div>
-    	<div id="d"></div>
+    	<div id="d">
+        <div id="stats"></div>
+        <a id="csv">Export CSV</a>
+    	</div>
+    </div>
+    <div class="row">
+      <div class="label">Male</div>
+      <div class="label">Female</div>
     </div>
     <div class="row">
     	<div class="graph" id="a"></div>
     	<div class="graph" id="b"></div>
     </div>
     <div class="row">
-    	<div class="label">
-    		Male<br><br>
-    		<span id="aPercent"></span>
-    	</div>
-    	<div class="label">
-    		Female<br><br>
-    		<span id="bPercent"></span>
-      </div>
+  		<div class="percent" id="aPercent"></div>
+      <div class="percent" id="bPercent"></div>
     </div>
     <div class="row">
-    	<p class="fine-print">This tool assumes both distributions are normal. Effect size is based on Cohen’s d. Overlap is based on Weitzman’s (greek delta). If you use this tool to prepare a publication, please cite TBN.</p>
+    	<p class="fine-print">This tool assumes both distributions are normal. Effect size is based on Cohen’s d. Overlap is based on Weitzman’s ∆ . If you use this tool to prepare a publication, please cite TBN.</p>
     </div>
     <div class="row">
-    	<footer>Created, owned, and maintained by Evan D. Goode. Made available under the <a href="license.txt">MIT License</a>.</footer>
+    	<footer>Created, owned, and maintained by Evan D. Goode.</footer>
     </div>
     <script src="js/d3.min.js"></script>
     <script src="js/jquery.min.js"></script>
