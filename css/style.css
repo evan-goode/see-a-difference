@@ -129,13 +129,13 @@ td input:focus {
 /* line 101, ../scss/style.scss */
 #a .line {
   stroke-width: 2;
-  fill: url("#aGradient");
+  fill: url(/#aGradient);
 }
 
 /* line 107, ../scss/style.scss */
 #b .line {
   stroke-width: 2;
-  fill: url(#bGradient);
+  fill: url(/#bGradient);
 }
 
 /* line 112, ../scss/style.scss */
