@@ -100,13 +100,13 @@ td {
 #a {
 	.line {
 		stroke-width: $lineWidth;
-		fill: url("#aGradient");
+		fill: url(/#aGradient);
 	}
 }
 #b {
 	.line{
 		stroke-width: $lineWidth;
-		fill: url(#bGradient);
+		fill: url("#bGradient);
 	}
 }
 .axis.x line {
