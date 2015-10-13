@@ -1,4 +1,3 @@
-// config
 zMin = -4;
 zMax = 4;
 sampleCount = 40;
@@ -13,7 +12,6 @@ bColor = "deeppink"
 aColorLight = "rgb(148, 201, 253)"
 bColorLight = "rgb(254, 145, 201)"
 mixedColorLight = "rgb(147, 146, 226)";
-// end config
 
 var aMean = 175;
 var bMean = 162;
