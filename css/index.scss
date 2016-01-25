@@ -137,17 +137,19 @@ td {
 
 .fine-print {
 	font-size: 14px;
-	margin: 0;
 }
 
 #stats {
 	font-size: 18px;
 }
 
+a {
+	color: rgb(147, 146, 226);
+}
+
 #csv {
 	display: inline-block;
 	cursor: pointer;
-	color: rgb(147, 146, 226);
 	transition: transform 0.2s;
 	text-decoration: underline;
 	&:hover {

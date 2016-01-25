@@ -126,16 +126,17 @@ td {
   margin-bottom: 64px; }
 
 .fine-print {
-  font-size: 14px;
-  margin: 0; }
+  font-size: 14px; }
 
 #stats {
   font-size: 18px; }
 
+a {
+  color: #9392e2; }
+
 #csv {
   display: inline-block;
   cursor: pointer;
-  color: #9392e2;
   -webkit-transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
   text-decoration: underline; }
