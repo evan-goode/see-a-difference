@@ -2,8 +2,7 @@ var gulp = require('gulp');
 
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var jade = require('gulp-jade');
-var livereload = require('gulp-livereload');
+var jade = require('gulp-pug');
 
 var paths = {
   sass: ['**/*.scss', '!node_modules/**'],
@@ -16,19 +15,16 @@ gulp.task('sass', function() {
   return gulp.src(paths.sass)
     .pipe(autoprefixer())
     .pipe(sass())
-    .pipe(gulp.dest('.'))
-    .pipe(livereload());
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('jade', function() {
   return gulp.src(paths.jade)
     .pipe(jade())
-    .pipe(gulp.dest('.'))
-    .pipe(livereload());
+    .pipe(gulp.dest('.'));
 })
 
 gulp.task('watch', function() {
-  livereload.listen();
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.jade, ['jade']);
 })
