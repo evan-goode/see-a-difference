@@ -1,23 +1,27 @@
-# SexDifference.org
+# effectsize.science
 
-[SexDifference.org](https://sexdifference.org) is an interactive tool for visualizing sex differences. It serves as a companion web page to "[Perils and pitfalls of reporting sex differences](https://dx.doi.org/10.1098/rstb.2015.0119)," an article published in the Philosophical Transactions of the Royal Society.
+[effectsize.science](https://effectsize.science) is an interactive tool for visualizing effect sizes. It provides the same functionality as [SexDifference.org](https://sexdifference.org), but uses language appropriate for any comparison between two groups, not just males and females.
 
-## Building
+## Getting started
 
-Clone the repository:
+Clone the repository.
 
 ```
-git clone "https://github.com/evan-goode/see-a-difference.git"
+git clone git@github.com:evan-goode/effectsize.science.git # SSH
+git clone https://github.com/evan-goode/effectsize.science.git # HTTPS
+
+cd effectsize.science
 ```
 
-Install dependencies:
+Install dependencies and start the development server.
 
 ```
 yarn
+yarn start
 ```
 
-Build the application with gulp:
+## Building for production
 
 ```
-yarn run gulp
+yarn build
 ```
