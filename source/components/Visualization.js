@@ -60,7 +60,11 @@ const processControls = controls => {
 };
 const validateControls = processed => {
 	const validate = (mean, sd) => {
-		return Math.abs(Math.log10(mean) - Math.log10(sd)) < 10;
+		return (
+			mean === 0 ||
+			sd === 0 ||
+			Math.abs(Math.log10(Math.abs(mean)) - Math.log10(Math.abs(sd))) < 10
+		);
 	};
 	return (
 		validate(processed.a.mean, processed.a.sd) &&
