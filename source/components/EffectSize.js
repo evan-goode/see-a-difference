@@ -24,7 +24,6 @@ export default props => {
 		constants.Z_MAX * a.sd + a.mean,
 		constants.Z_MAX * b.sd + b.mean
 	);
-	console.log({ minimum, maximum });
 	const distributions = {
 		a: gaussian(a.mean, a.sd * a.sd),
 		b: gaussian(b.mean, b.sd * b.sd)

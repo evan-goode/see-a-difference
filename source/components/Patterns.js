@@ -28,7 +28,7 @@ export default (props) => {
 						y="0"
 						width="1"
 						height="1"
-						fill={props.colors["a-color"]}
+						fill={props.colors.a}
 					/>
 				</Pattern>
 				<Pattern id={props.patternIds.b} width="1" height="1">
@@ -37,7 +37,7 @@ export default (props) => {
 						y="0"
 						width="1"
 						height="1"
-						fill={props.colors["b-color"]}
+						fill={props.colors.b}
 					/>
 				</Pattern>
 				{constants.HATCH ? (
@@ -52,7 +52,7 @@ export default (props) => {
 							y="0"
 							width={hatchSize}
 							height={hatchSize}
-							fill={props.colors["a-color"]}
+							fill={props.colors.a}
 						/>
 						<line
 							x1="0"
@@ -60,7 +60,7 @@ export default (props) => {
 							x2="0"
 							y2={hatchSize}
 							style={{
-								stroke: props.colors["b-color"],
+								stroke: props.colors.b,
 								strokeWidth: hatchSize,
 							}}
 						/>
@@ -76,7 +76,7 @@ export default (props) => {
 							y="0"
 							width="1"
 							height="1"
-							fill={props.colors["intersect-color"]}
+							fill={props.colors.intersect}
 						/>
 					</Pattern>
 				)}

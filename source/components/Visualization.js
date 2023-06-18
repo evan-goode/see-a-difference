@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import _ from "lodash";
-import { notify } from "react-notify-toast";
+import {notify} from "react-notify-toast";
 
-import { Row, Column, Flexed, Spacer } from "../components/common";
+import {Row, Column, Flexed, Spacer} from "../components/common";
 import Controls from "../components/Controls";
 import ColorControls from "../components/ColorControls";
 import Patterns from "../components/Patterns";
@@ -95,10 +95,7 @@ export default class Visualization extends React.PureComponent {
 				["b-n"]: INITIAL_CONTROLS["b-n"],
 				["use-se"]: INITIAL_CONTROLS["use-se"],
 			},
-			colors: {
-				["a-color"]: constants.COLORS.a,
-				["b-color"]: constants.COLORS.b,
-			},
+			colors: constants.COLORS,
 		};
 		this.patternIds = {
 			a: _.uniqueId(),
@@ -107,10 +104,10 @@ export default class Visualization extends React.PureComponent {
 		};
 	}
 	setControls = (controls) => {
-		this.setState({ controls });
+		this.setState({controls});
 	};
 	setColors = (colors) => {
-		this.setState({ colors });
+		this.setState({colors});
 	};
 	render() {
 		const controls = processControls(this.state.controls);
@@ -170,7 +167,7 @@ export default class Visualization extends React.PureComponent {
 						<Comparator
 							sample={controls.a}
 							other={controls.b}
-							labels={{ sample: "male", other: "female" }}
+							labels={{sample: "male", other: "female"}}
 						/>
 					</Column>
 					<Column>
@@ -183,7 +180,7 @@ export default class Visualization extends React.PureComponent {
 						<Comparator
 							sample={controls.b}
 							other={controls.a}
-							labels={{ sample: "female", other: "male" }}
+							labels={{sample: "female", other: "male"}}
 						/>
 					</Column>
 				</Row>

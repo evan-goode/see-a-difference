@@ -19,7 +19,6 @@ export const d3FillWithPattern = (root, clipIds, patternId, width, height) => {
 };
 
 export const d3Wrap = (wrapped, style = "") => {
-	console.log({ style });
 	const Styled = styled.div`
 		${style}
 	`;
