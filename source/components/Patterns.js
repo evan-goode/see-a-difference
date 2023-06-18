@@ -9,7 +9,7 @@ const HiddenSvg = styled.svg`
 	position: absolute;
 `;
 
-const Pattern = props => {
+const Pattern = (props) => {
 	return (
 		<pattern {...props} id={props.id} patternUnits="userSpaceOnUse">
 			{props.children}
@@ -17,19 +17,69 @@ const Pattern = props => {
 	);
 };
 
-export default props => {
+export default (props) => {
+	const hatchSize = 8;
 	return (
 		<HiddenSvg>
 			<defs>
 				<Pattern id={props.patternIds.a} width="1" height="1">
-					<rect x="0" y="0" width="1" height="1" fill={constants.COLORS.a} />
+					<rect
+						x="0"
+						y="0"
+						width="1"
+						height="1"
+						fill={props.colors["a-color"]}
+					/>
 				</Pattern>
 				<Pattern id={props.patternIds.b} width="1" height="1">
-					<rect x="0" y="0" width="1" height="1" fill={constants.COLORS.b} />
+					<rect
+						x="0"
+						y="0"
+						width="1"
+						height="1"
+						fill={props.colors["b-color"]}
+					/>
 				</Pattern>
-				<Pattern id={props.patternIds.intersect} width="1" height="1">
-					<rect x="0" y="0" width="1" height="1" fill={constants.COLORS.intersect} />
-				</Pattern>
+				{constants.HATCH ? (
+					<Pattern
+						id={props.patternIds.intersect}
+						patternTransform="rotate(45 0 0)"
+						width={hatchSize}
+						height={hatchSize}
+					>
+						<rect
+							x="0"
+							y="0"
+							width={hatchSize}
+							height={hatchSize}
+							fill={props.colors["a-color"]}
+						/>
+						<line
+							x1="0"
+							y1="0"
+							x2="0"
+							y2={hatchSize}
+							style={{
+								stroke: props.colors["b-color"],
+								strokeWidth: hatchSize,
+							}}
+						/>
+					</Pattern>
+				) : (
+					<Pattern
+						id={props.patternIds.intersect}
+						width="1"
+						height="1"
+					>
+						<rect
+							x="0"
+							y="0"
+							width="1"
+							height="1"
+							fill={props.colors["intersect-color"]}
+						/>
+					</Pattern>
+				)}
 			</defs>
 		</HiddenSvg>
 	);

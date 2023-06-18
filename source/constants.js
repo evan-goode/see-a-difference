@@ -12,3 +12,5 @@ export const COLORS = {
 	b: "#fe91c9",
 	intersect: "#8e8ce4",
 };
+
+export const HATCH = true;

@@ -7,10 +7,10 @@ export const Row = styled.div`
 	align-items: center;
 	justify-content: center;
 	> :not(:first-child) {
-		margin-left: ${props => props.spacing};
+		margin-left: ${(props) => props.spacing};
 	}
 	> :not(:last-child) {
-		margin-right: ${props => props.spacing};
+		margin-right: ${(props) => props.spacing};
 	}
 `;
 
@@ -30,13 +30,13 @@ export const Input = styled.input`
 	border: none;
 	outline: none;
 	border-radius: 0.5em;
-	width: 3em;
+	width: ${(props) => props.width || "3em"};
 	padding: 0.2em;
 	text-align: center;
 	transition: background ${constants.ANIMATION_DURATION}ms;
-	border: 0.15em solid ${props => props.color};
+	border: 0.15em solid ${(props) => props.color};
 	&:focus {
-		background: ${props => transparentize(0.75, props.color)};
+		background: ${(props) => false && transparentize(0.75, props.color)};
 	}
 `;
 export const Check = styled.input.attrs({ type: "checkbox" })`

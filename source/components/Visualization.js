@@ -5,6 +5,7 @@ import { notify } from "react-notify-toast";
 
 import { Row, Column, Flexed, Spacer } from "../components/common";
 import Controls from "../components/Controls";
+import ColorControls from "../components/ColorControls";
 import Patterns from "../components/Patterns";
 import LargeChart from "../components/LargeChart";
 import EffectSize from "../components/EffectSize";
@@ -20,7 +21,7 @@ const INITIAL_CONTROLS = {
 	["b-sd"]: 6.5,
 	["a-n"]: 100,
 	["b-n"]: 100,
-	["use-se"]: false
+	["use-se"]: false,
 };
 
 const parseFloatFallback = (value, fallback, positive = false) => {
@@ -36,7 +37,7 @@ const parseSd = (sd, se, n, useSe) => {
 	}
 	return parseFloatFallback(sd, 1, true);
 };
-const processControls = controls => {
+const processControls = (controls) => {
 	return {
 		a: {
 			mean: parseFloatFallback(controls["a-mean"], 0),
@@ -45,7 +46,7 @@ const processControls = controls => {
 				controls["a-se"],
 				controls["a-n"],
 				controls["use-se"]
-			)
+			),
 		},
 		b: {
 			mean: parseFloatFallback(controls["b-mean"], 0),
@@ -54,11 +55,12 @@ const processControls = controls => {
 				controls["b-se"],
 				controls["b-n"],
 				controls["use-se"]
-			)
-		}
+			),
+		},
 	};
 };
-const validateControls = processed => {
+
+const validateControls = (processed) => {
 	const validate = (mean, sd) => {
 		return (
 			mean === 0 ||
@@ -82,28 +84,37 @@ export default class Visualization extends React.PureComponent {
 				["a-sd"]: INITIAL_CONTROLS["a-sd"].toString(),
 				["b-sd"]: INITIAL_CONTROLS["b-sd"].toString(),
 				["a-se"]: (
-					INITIAL_CONTROLS["a-sd"] / Math.sqrt(INITIAL_CONTROLS["a-n"])
+					INITIAL_CONTROLS["a-sd"] /
+					Math.sqrt(INITIAL_CONTROLS["a-n"])
 				).toString(),
 				["b-se"]: (
-					INITIAL_CONTROLS["b-sd"] / Math.sqrt(INITIAL_CONTROLS["b-n"])
+					INITIAL_CONTROLS["b-sd"] /
+					Math.sqrt(INITIAL_CONTROLS["b-n"])
 				).toString(),
 				["a-n"]: INITIAL_CONTROLS["a-n"],
 				["b-n"]: INITIAL_CONTROLS["b-n"],
-				["use-se"]: INITIAL_CONTROLS["use-se"]
-			}
+				["use-se"]: INITIAL_CONTROLS["use-se"],
+			},
+			colors: {
+				["a-color"]: constants.COLORS.a,
+				["b-color"]: constants.COLORS.b,
+			},
 		};
 		this.patternIds = {
 			a: _.uniqueId(),
 			b: _.uniqueId(),
-			intersect: _.uniqueId()
+			intersect: _.uniqueId(),
 		};
 	}
-	setControls = controls => {
+	setControls = (controls) => {
 		this.setState({ controls });
 	};
+	setColors = (colors) => {
+		this.setState({ colors });
+	};
 	render() {
-		const processedControls = processControls(this.state.controls);
-		if (!validateControls(processedControls)) {
+		const controls = processControls(this.state.controls);
+		if (!validateControls(controls)) {
 			try {
 				notify.show(
 					"This tool may report inaccurate results when the mean and standard deviation differ by many orders of magnitude.",
@@ -118,30 +129,33 @@ export default class Visualization extends React.PureComponent {
 		}
 		const smallPatternIdsA = {
 			sample: this.patternIds.a,
-			intersect: this.patternIds.intersect
+			intersect: this.patternIds.intersect,
 		};
 		const smallPatternIdsB = {
 			sample: this.patternIds.b,
-			intersect: this.patternIds.intersect
+			intersect: this.patternIds.intersect,
 		};
 		return (
 			<>
-				<Patterns patternIds={this.patternIds} />
+				<Patterns
+					colors={this.state.colors}
+					patternIds={this.patternIds}
+				/>
 				<Row>
 					<Controls
 						controls={this.state.controls}
 						setControls={this.setControls}
-						colors={constants.COLORS}
+						colors={this.state.colors}
 					/>
 					<Flexed>
 						<LargeChart
-							samples={processedControls}
+							samples={controls}
 							patternIds={this.patternIds}
 						/>
 					</Flexed>
 					<div>
-						<EffectSize samples={processedControls} />
-						<ExportCsv samples={processedControls} />
+						<EffectSize samples={controls} />
+						<ExportCsv samples={controls} />
 					</div>
 				</Row>
 				<Spacer />
@@ -149,29 +163,36 @@ export default class Visualization extends React.PureComponent {
 					<Column>
 						<p>Male</p>
 						<SmallChart
-							sample={processedControls.a}
-							other={processedControls.b}
+							sample={controls.a}
+							other={controls.b}
 							patternIds={smallPatternIdsA}
 						/>
 						<Comparator
-							sample={processedControls.a}
-							other={processedControls.b}
+							sample={controls.a}
+							other={controls.b}
 							labels={{ sample: "male", other: "female" }}
 						/>
 					</Column>
 					<Column>
 						<p>Female</p>
 						<SmallChart
-							sample={processedControls.b}
-							other={processedControls.a}
+							sample={controls.b}
+							other={controls.a}
 							patternIds={smallPatternIdsB}
 						/>
 						<Comparator
-							sample={processedControls.b}
-							other={processedControls.a}
+							sample={controls.b}
+							other={controls.a}
 							labels={{ sample: "female", other: "male" }}
 						/>
 					</Column>
+				</Row>
+				<Spacer />
+				<Row>
+					<ColorControls
+						colors={this.state.colors}
+						setColors={this.setColors}
+					/>
 				</Row>
 			</>
 		);

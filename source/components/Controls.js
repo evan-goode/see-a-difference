@@ -144,28 +144,28 @@ export default class extends React.PureComponent {
 							label="Male"
 							sample="a"
 							handleChange={this.handleChange}
-							color={this.props.colors.a}
+							color={this.props.colors["a-color"]}
 						/>
 						<SpreadControls
 							controls={this.props.controls}
 							label="Male"
 							sample="a"
 							handleChange={this.handleChange}
-							color={this.props.colors.a}
+							color={this.props.colors["a-color"]}
 						/>
 						<MeanControl
 							controls={this.props.controls}
 							label="Female"
 							sample="b"
 							handleChange={this.handleChange}
-							color={this.props.colors.b}
+							color={this.props.colors["b-color"]}
 						/>
 						<SpreadControls
 							controls={this.props.controls}
 							label="Female"
 							sample="b"
 							handleChange={this.handleChange}
-							color={this.props.colors.b}
+							color={this.props.colors["b-color"]}
 						/>
 						<UseSeControl
 							controls={this.props.controls}
